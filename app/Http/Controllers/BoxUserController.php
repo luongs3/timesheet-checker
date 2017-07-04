@@ -8,17 +8,25 @@ use wataridori\ChatworkSDK\ChatworkSDK;
 
 class BoxUserController extends Controller
 {
-    public function index()
+    public function index($roomId)
     {
-//        $me = $this->api->me();
-        $roomId = '61611115';
         $room = new ChatworkRoom($roomId);
         $members = $room->getMembers();
-        $room->sendMessageToAll('Test');
-        echo "<pre>";
-        print_r($members);
-        echo "<br>";
-        die();
-        return $me;
+
+        return $members; // $member in $members is not Array, so need to be converted $member->toArray()
     }
+
+    public function getNameAllMembersInBox($roomId)
+    {
+        $room = new ChatworkRoom($roomId);
+        $members = $room->getMembers();
+        $names = [];
+
+        foreach ($members as $member) {
+            $names[] = $member->toArray()['name'];
+        }
+
+        return $names;
+    }
+
 }

@@ -17,3 +17,7 @@
 
 Route::get('timesheet', 'TimesheetController@index')->name('timesheet.index');
 
+Route::resource('boxes/{id}/users','BoxUserController');
+Route::get('boxes/{id}/users/name', 'BoxUserController@getNameAllMembersInBox');
+
+

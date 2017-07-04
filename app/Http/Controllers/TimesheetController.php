@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Console\Commands\CheckTimesheet;
 use Illuminate\Http\Request;
+use wataridori\ChatworkSDK\ChatworkRoom;
 
 class TimesheetController extends Controller
 {

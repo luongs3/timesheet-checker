@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Components\Timesheet;
 use Illuminate\Console\Command;
 
-class CheckTimesheet extends Command
+class ChecKTimesheet extends Command
 {
     /**
      * The name and signature of the console command.
@@ -20,15 +19,16 @@ class CheckTimesheet extends Command
      * @var string
      */
     protected $description = 'Daily at 14:00 check timesheet for all users in my list users';
-    protected $timesheet;
 
     /**
      * Create a new command instance.
+     *
+     * @return void
      */
-    public function __construct()
+    public function __construct(\Timesheet $timesheet)
     {
         parent::__construct();
-        $this->timesheet = new Timesheet();
+        $this->timesheet = $timesheet;
     }
 
     /**
@@ -38,8 +38,6 @@ class CheckTimesheet extends Command
      */
     public function handle()
     {
-        $data = $this->timesheet->getTimesheetData();
-
-        return $data;
+        //
     }
 }
